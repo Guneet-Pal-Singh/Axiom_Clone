@@ -43,6 +43,7 @@ export default function Home() {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <TooltipProvider>
+        <></>
         <div className="flex min-h-screen flex-col bg-[#0a0a0a] text-white overflow-hidden">
           <NavBar />
           

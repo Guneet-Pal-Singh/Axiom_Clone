@@ -32,9 +32,22 @@ export function generateMockTokens(count: number, column: 'newPairs' | 'finalStr
     const marketCap = Math.random() * 500000 + 1000;
     const volume = Math.random() * 50000 + 100;
     
-    // Generate random image URL using Picsum Photos with unique seed per token
-    const imageSeed = Math.floor(Math.random() * 1000) + i;
-    const iconUrl = `https://picsum.photos/seed/${imageSeed}/48/48`;
+    // Use one of the bundled local photos from public/photos instead of fetching online
+    const photos = [
+      'austin-chan-ukzHlkoz1IE-unsplash.jpg',
+      'clark-tibbs-oqStl2L5oxI-unsplash.jpg',
+      'david-kovalenko-G85VuTpw6jg-unsplash.jpg',
+      'davisuko-5E5N49RWtbA-unsplash.jpg',
+      'diego-ph-fIq0tET6llw-unsplash.jpg',
+      'efe-kurnaz-RnCPiXixooY-unsplash.jpg',
+      'ian-schneider-TamMbr4okv4-unsplash.jpg',
+      'matthew-henry-U5rMrSI7Pn4-unsplash.jpg',
+      'mike-dorner-sf_1ZDA1YFw-unsplash.jpg',
+      'raimond-klavins-uAk731NvaJo-unsplash.jpg',
+    ];
+
+    // Select a photo deterministically from the list so results are stable per-run
+    const iconUrl = `/photos/${photos[i % photos.length]}`;
     
     return {
       id: nanoid(),
